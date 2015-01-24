@@ -1,0 +1,14 @@
+@import helper._
+        
+@main("Редактор"){
+<script src="@routes.Assets.at("ckeditor/ckeditor.js")"></script>
+
+<form method="post">
+    <p>
+        <textarea name="editor" id="editor"></textarea>
+        <script>
+                CKEDITOR.replace( 'editor' );
+        </script>
+    </p>
+</form>
+}

@@ -1,0 +1,137 @@
+body {
+    margin:0;
+    padding:0;
+    background-color:#f3f3f3;
+}
+
+#top_nav{
+    width:1000px;
+    margin:0 auto;
+}
+
+/*Заголовок*/
+header{
+    background-color:#567ca4;
+    top:0px;
+    left:0px;
+    height:50px;
+    width:100%;
+    position:fixed;
+    /*z-index:110;*/
+}
+
+footer{
+    background-color:gray;
+    box-shadow:5px 5px 3px #a3a3a3;
+
+    position:absolute;
+
+    bottom:0;
+
+    border-radius:5px;
+    border: 1px;
+    border-color: #a3a3a3;
+    border-style:solid;
+
+    width:80%;
+    height:100px;
+ /*   z-index:110;*/
+}
+
+/*верхнее меню*/
+
+ul.nav li ul{
+    display:none;
+}
+
+ul.nav li{
+    padding: 8px 10px 7px 10px;
+    list-style:none;
+    float:left;
+    height:34px;
+    background-color:#567ca4;
+}
+
+ul.nav li a{
+    font-size:27px;
+    text-decoration:none;
+    color:white;
+}
+
+ul.nav li:hover > ul{
+    display:block;
+    position:absolute;
+}
+ul.nav li:hover{
+    background:#41658c;
+}
+
+ul.nav li ul li{
+    float:none;
+}
+
+ul.nav li:hover ul li ul{
+    position:absolute;
+    left:150px;
+}
+
+ul.nav{
+    margin:0;
+}
+
+/*конец верхнего меню*/
+
+
+ul.tips_list li{
+    /*display:inline;
+    text-decoration:underline;
+    */list-style:none;
+      padding:5px;
+}
+
+#page{
+    margin:70px auto;
+    vertical-align:central;
+    width:1200px;
+}
+
+/*основное содержимое, в которое входят статьи и прочее*/
+#content{
+    float:left;
+    width:870px;
+}
+
+
+
+/*начало: всё что находится в боковом меню*/
+#tips_content{
+    float:right;
+    width:300px;
+}
+
+/*каждый блок бокового меню*/
+.tip{
+    background-color:white;
+
+    margin-bottom:10px;
+    margin-top:10px;
+
+    box-shadow:0px 1px 1px #a3a3a3;
+}
+/*конец: всё что находится в боковом меню*/
+
+
+/*пример статьи*/
+.notice {
+    padding: 5px 7px 5px 7px;
+    text-indent:25px;
+
+    background-color:white;
+    /*z-index:110;*/
+
+    margin-bottom:20px;
+    margin-top:20px;
+
+    box-shadow:0px 1px 1px #a3a3a3;
+}
+/*конец примера статьи*/

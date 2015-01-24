@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script language="javascript" type="text/javascript">
+
+      var wsUri = "ws://localhost:9000/connect";
+      var output;
+
+      var username;
+
+      function createConnect()
+      {
+        output = document.getElementById("output");
+        username=document.getElementById("username").value;
+        createWebSocket();
+      }
+
+      function createWebSocket()
+      {
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) { onOpen(evt) };
+        websocket.onclose = function(evt) { onClose(evt) };
+        websocket.onmessage = function(evt) { onMessage(evt) };
+        websocket.onerror = function(evt) { onError(evt) };
+      }
+
+      function onOpen(evt)
+      {
+        writeToScreen("CONNECTED");
+      }
+
+      function onClose(evt)
+      {
+        writeToScreen("DISCONNECTED");
+      }
+
+      function onMessage(evt)
+      {
+        writeToScreen('<span style="color: blue;">' + evt.data+'</span>');
+      }
+
+      function onError(evt)
+      {
+            console.log(evt);
+        writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+      }
+
+      function doSend(message)
+      {
+        writeToScreen(username+": " + message);
+        websocket.send(username+": " + message);
+      }
+
+      function writeToScreen(message)
+      {
+        var pre = document.createElement("p");
+        pre.style.wordWrap = "break-word";
+        pre.innerHTML = message;
+        output.appendChild(pre);
+      }
+
+      function sendMessage(){
+        doSend(document.getElementById("message").value);
+      }
+
+
+    </script>
+    <style>
+        .msg
+        {
+            border:1px;
+            background-color:white;
+            height: 400px;
+            weight: 400px;
+        }
+        body
+        {
+            background-color: #c0c0c0;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <input type="textarea" id="username"/>
+    <input type="button" value="connect" id="connect" onclick="createConnect();"/>
+</form>
+
+    <div class="msg" id="output">
+
+    </div>
+<form autocomplete="on">
+    <input type="text" id="message"/>
+    <input type="button" value="send" onclick="sendMessage()"/>
+</form>
+
+</body>
+</html>
