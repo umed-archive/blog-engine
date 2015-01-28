@@ -1,6 +1,5 @@
 package controllers
 
-import models.ChatServer
 import play.api._
 import play.api.libs.json._
 import play.api.mvc._
@@ -39,16 +38,14 @@ object Application extends Controller {
   def save=Action{
 
     implicit request =>
-      val (header,notice)= form.bindFromRequest.get
-      print(header)
-      print(notice)
-      Ok(views.html.noticePage(notice))
+      val (title,notice)= form.bindFromRequest.get
+      Ok(views.html.noticePage(title,notice))
   }
 
 
   val form = Form(
     tuple(
-    "articletitle"->text,
+    "noticeTitle"->text,
     "editor"->text
     )
   )
@@ -56,9 +53,9 @@ object Application extends Controller {
   def add = Action{
 
     implicit request =>
-      val (header,notice)= form.bindFromRequest.get
+      val (title,notice)= form.bindFromRequest.get
 
-      Ok(views.html.noticePage(notice))
+      Ok(views.html.noticePage(title,notice))
 
 
   }

@@ -13,11 +13,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 #POST    /                           controllers.Application.add
 GET     /show                       controllers.Application.showAll
 
-GET     /connect                    controllers.Chat.connect
-
-GET     /chat                       controllers.Chat.chat
-
-
 #blog
 GET     /about                      controllers.Application.about
 
