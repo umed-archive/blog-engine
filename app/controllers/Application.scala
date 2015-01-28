@@ -16,10 +16,11 @@ import play.api.libs.functional.syntax._
 import scala.concurrent.Future
 
 
-
 import play.api.libs.iteratee._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
+
+import models._
 
 object Application extends Controller {
 
@@ -38,32 +39,28 @@ object Application extends Controller {
   def save=Action{
 
     implicit request =>
-      val noticeInf= form.bindFromRequest.get
-
-      Ok(views.html.noticePage(noticeInf))
+      val (header,notice)= form.bindFromRequest.get
+      print(header)
+      print(notice)
+      Ok(views.html.noticePage(notice))
   }
 
 
   val form = Form(
+    tuple(
+    "articletitle"->text,
     "editor"->text
+    )
   )
 
   def add = Action{
 
     implicit request =>
-      val notice= form.bindFromRequest.get
+      val (header,notice)= form.bindFromRequest.get
 
       Ok(views.html.noticePage(notice))
 
 
-/*      collection.insert(json).map((lastError) => {
-
-        if (lastError.inError)
-          Ok("Mongo LastError: %s".format(lastError))
-        else
-          Ok("User add")
-
-      })*/
   }
 
   def showAll = Action{
