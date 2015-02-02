@@ -1,4 +1,4 @@
-name := """first-app"""
+name := """My Blog"""
 
 version := "1.0-SNAPSHOT"
 
@@ -13,6 +13,6 @@ libraryDependencies ++= Seq(
   jdbc,
   anorm,
   cache,
-  ws
-  //"org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.akka23-SNAPSHOT"
+  ws,
+  "org.postgresql" % "postgresql" % "9.3-1100-jdbc4"
 )

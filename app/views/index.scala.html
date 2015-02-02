@@ -1,7 +1,11 @@
-@(names: String)
+@(posts:List[(Int,String)])
 
 @import helper._
 
-@main(names) {
-
+@main("Главная страница") {
+@for(post <- posts){
+<div class="notice">
+    <h2><a href="post/@post._1">@post._2</a></h2>
+</div>
+}
 }
